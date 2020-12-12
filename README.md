@@ -44,6 +44,8 @@ Clean Code
 * Beautified code
 * Separate concepts into there levels of abstraction
 * Easy to maintain
+* Small functions can replace complex statements with an easy to read function name. Specially for predicates.
+        if(predicate) {}
 
 ####Small is better - how small function ?
 * 5-7 lines of code without logger should be enough. Separate the high cohesive lines into new functions. CTRL + ALT + M (Intellij)
@@ -72,7 +74,7 @@ Naming (methods, classes, variables)
 * Methods should start with a verb - getStrategyResult, createSomething, doSomething
 
 
-## Name Size
+## Naming Size (Scope Rule by Uncle Bob)
 * Small scope - small variable name, big method name (scope of private methods is within the class only with less usage, so the name should be well descriptive to avoid confusion)
 * Big scope - big variable name, small method name
 * Naming should be done in such way so that other developer can understand the significance with no effort.
@@ -98,3 +100,54 @@ Naming (methods, classes, variables)
         performTrading( brokerTradeInput );
         
 No boolean and null parameters - instead crate two functions, one for true/null and one for false/value.    
+
+## Comments
+* Often, comments are bad. Why ? Because we can't trust them. They might be lying. Can be true today, false tomorrow.
+* One two things to trust in programming: 1. Code 2. Tests 
+* Often when the code changes, comments don't.
+
+* It's OK to write comment when you absolutely can't express yourself with code. E.g., while writing a complex regex.
+* Comments also should be written in case of any critical consequences.
+* Comments should be written details way when writing public library.
+
+* Useless javadocs are useless.
+
+### Bad comments
+    /**
+    * I hope we can improve the function name
+    */
+    private Result getResultWIthHtml(Result result) {
+    }
+    
+    //first name
+    String firstName;
+    
+    //Creating a new result object
+    Result result = new Result();
+    
+
+### Should we use exception ?
+* Use exceptions instead of error codes. 
+* Use your own exceptions not the java ones.Make your exception class as described, so that exception messages are not required unless, very essential.
+* Use unchecked/runtime exceptions instead of checked ones.
+* Make sure your try & catch are small. Extract them into functions if they are more than 2/3 lines.
+
+
+### OOPs Objects vs Data Structure Objects
+
+### Composition over Inheritance (Communication between Objects)
+* One object can communicate with another object in two ways.
+* One object can have the other object as a property - Composition (A has B or HAS-A relation)
+* One object can inherit the other object - Inheritance (A is B or IS-A relation)
+* In Composition over Inheritance is a programming pattern where composition is preffered than inheritance, because composition leads to flexibility & inheritance rigidity (forces to inherit all the properties. Abstract classes to the rescue).
+
+### Symptoms of bad code
+1. Rigidity - Code is hard to change. Any change request by business takes a lot of time.
+2. Fragility - When you touch code to change it just inevitably breaks elsewhere.
+3. Immobility - Code suffers re-usability. Lack of small functions.
+4. Viscosity - environmental issues due to which project is not flexible to handle. Testing/deployment becomes very slow.
+
+
+
+
+
