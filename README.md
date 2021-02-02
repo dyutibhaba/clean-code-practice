@@ -47,10 +47,10 @@ Clean Code
 * Small functions can replace complex statements with an easy to read function name. Specially for predicates.
         if(predicate) {}
 
-####Small is better - how small function ?
+#### Small is better - how small function ?
 * 5-7 lines of code without logger should be enough. Separate the high cohesive lines into new functions. CTRL + ALT + M (Intellij)
 
-####Small is better - how small class ?
+#### Small is better - how small class ?
 * 10 - 50 -100 lines. towards 100 ? break class to make classes. 
 * Avoid putting multiple statements in one line to reduce num of lines. This way complexity increases. Not a good practice.
 
